@@ -9,9 +9,8 @@ export interface ItemProps {
 }
 
 const Item: React.FC<ItemProps> = (props) => {
-  const [style, setStyle] = useState<string>(styles.item);
   return (
-    <div className={style}>
+    <div className={props.isDone ? styles.markedItem : styles.item}>
       <div className={styles.taskName}>{props.taskName}</div>
       <button
         className={styles.deleteB}
@@ -21,10 +20,7 @@ const Item: React.FC<ItemProps> = (props) => {
       </button>
       <button
         className={styles.completeB}
-        onClick={() => {
-          setStyle(styles.markedItem);
-          props.markTaskAsDone(props.taskName);
-        }}
+        onClick={() => props.markTaskAsDone(props.taskName)}
       >
         Complete
       </button>

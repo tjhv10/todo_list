@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import styles from "./Tasks.module.css";
 import Item, { ItemProps } from "../Item/item.tsx";
+import useListenWindow from "./hooks/useListenWindow.tsx";
 
 const Tasks: React.FC = () => {
   const [tasks, setTasks] = useState<ItemProps[]>([]);
@@ -15,7 +16,7 @@ const Tasks: React.FC = () => {
     setTasks(tasks.filter((task) => task.taskName !== taskName));
   };
 
-  const markTaskAsDone = (taskName: String) => {
+  const markTaskAsDone = (taskName: string) => {
     setTasks(
       tasks.map((task) =>
         taskName === task.taskName ? { ...task, isDone: true } : task
@@ -23,32 +24,24 @@ const Tasks: React.FC = () => {
     );
   };
 
-  const renderTasks = () => {
-    return tasks.map((task) => (
+  const renderTasks = () =>
+    tasks.map((task) => (
       <Item
+        key={task.taskName}
         taskName={task.taskName}
         isDone={task.isDone}
         removeTask={removeTask}
         markTaskAsDone={markTaskAsDone}
       />
     ));
-  };
 
   useEffect(() => {
     setItemsLeft(tasks.filter((task) => !task.isDone).length);
   }, [tasks]);
 
-  useEffect(() => {
-    window.addEventListener("keydown", _handleKeyDown);
-    return () => {
-      window.removeEventListener("keydown", _handleKeyDown);
-    };
-  });
-
-  const _handleKeyDown = (e) => {
+  const _handleKeyDown = (e: KeyboardEvent) => {
     if (e.key === "Enter") {
       let wrongInput = false;
-      // console.log(e)
       if (query.trim() === "") {
         alert("Please enter a task!");
         wrongInput = true;
@@ -71,6 +64,7 @@ const Tasks: React.FC = () => {
       setQuery("");
     }
   };
+  useListenWindow(_handleKeyDown);
 
   return (
     <>
