@@ -1,0 +1,42 @@
+.item {
+    color: white;
+    border-radius: 2px;
+    border: 2px solid white;
+    border-radius: 15px;
+    padding: 10px;
+    margin: 10px;
+}
+
+.markedItem {
+    color: white;
+    text-decoration: line-through;
+    border-radius: 2px;
+    border: 2px solid white;
+    border-radius: 15px;
+    padding: 10px;
+    margin: 10px;
+}
+
+.deleteB {
+    background-color: red;
+    color: white;
+    border-radius: 5px;
+    float: right;
+}
+
+.completeB {
+    background-color: blueviolet;
+    color: white;
+    border-radius: 5px;
+    float: right;
+}
+
+.taskName {
+    overflow-wrap: anywhere;
+    color: white;
+    overflow-y: scroll;
+    scrollbar-width: none;
+    overflow-y: scroll;
+    scrollbar-width: none;
+    max-height: calc(100vh - 800px);
+}

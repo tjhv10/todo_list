@@ -1,0 +1,44 @@
+.taskInput {
+  display: flex;
+  position: fixed;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+  width: 300px;
+  height: 20px;
+}
+
+.pendingTasks {
+  display: block;
+  margin: 0 auto;
+  color: white;
+  display: flex;
+  margin-bottom: 20px;
+  justify-content: center;
+  align-items: center;
+}
+
+.content {
+  padding: 10px;
+  height: calc(100vh - 680px);
+  overflow-y: scroll;
+  scrollbar-width: none;
+}
+.item {
+  color: white;
+  border-radius: 2px;
+  border: 2px solid white;
+  border-radius: 15px;
+  padding: 10px;
+  margin: 10px;
+}
+
+.markedItem {
+  color: white;
+  text-decoration: line-through;
+  border-radius: 2px;
+  border: 2px solid white;
+  border-radius: 15px;
+  padding: 10px;
+  margin: 10px;
+}
